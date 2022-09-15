@@ -48,11 +48,9 @@ async fn main() -> eyre::Result<()> {
         call_data: "0x18160ddd".parse::<ethers::types::Bytes>().unwrap(),
     });
 
-    let tx = multicall2.aggregate(call_vec).send()
-        .await.unwrap()
-        .await.unwrap()
-        .unwrap();
+    let (_success, ret_data) = multicall2.aggregate(call_vec).call().await.unwrap();
 
-    println!("{:?}", tx.transaction_hash);
+    println!("{:?}", ret_data[0]);
+    println!("{:?}", ret_data[1]);
     Ok(())
 }
