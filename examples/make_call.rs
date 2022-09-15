@@ -4,13 +4,6 @@ use std::{convert::TryFrom, sync::Arc, time::Duration};
 use multicall_address::contract;
 use multicall_contract::multicall2;
 
-abigen!(
-    IERC20,
-    r#"[
-        function totalSupply() public view returns (uint256)
-    ]"#,
-);
-
 #[tokio::main]
 async fn main() -> eyre::Result<()> {
     // mainnet address
@@ -38,12 +31,12 @@ async fn main() -> eyre::Result<()> {
 
     let mut call_vec = Vec::new();
     // weth totalSupply
-    call_vec.push(multicall2::multicall_2::Call {
+    call_vec.push(multicall2::Call {
         target: weth,
         call_data: "0x18160ddd".parse::<ethers::types::Bytes>().unwrap(),
     });
     // usdc totalSupply
-    call_vec.push(multicall2::multicall_2::Call {
+    call_vec.push(multicall2::Call {
         target: usdc,
         call_data: "0x18160ddd".parse::<ethers::types::Bytes>().unwrap(),
     });
