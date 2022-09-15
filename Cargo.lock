@@ -13,16 +13,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "address-book"
-version = "0.1.0"
-dependencies = [
- "ethers",
- "once_cell",
- "serde",
- "serde_json",
-]
-
-[[package]]
 name = "aes"
 version = "0.8.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -386,13 +376,6 @@ name = "const-oid"
 version = "0.9.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "722e23542a15cea1f65d4a1419c4cfd7a26706c70871a13a04238ca3f40f1661"
-
-[[package]]
-name = "contract"
-version = "0.1.0"
-dependencies = [
- "ethers",
-]
 
 [[package]]
 name = "convert_case"
@@ -1356,8 +1339,32 @@ dependencies = [
 ]
 
 [[package]]
+name = "multicall-address"
+version = "0.1.0"
+dependencies = [
+ "ethers",
+ "once_cell",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
+name = "multicall-contract"
+version = "0.1.0"
+dependencies = [
+ "ethers",
+]
+
+[[package]]
 name = "multicall-rs"
 version = "0.1.0"
+dependencies = [
+ "ethers",
+ "eyre",
+ "multicall-address",
+ "multicall-contract",
+ "tokio",
+]
 
 [[package]]
 name = "num-integer"
@@ -2135,9 +2142,9 @@ checksum = "cda74da7e1a664f795bb1f8a87ec406fb89a02522cf6e50620d016add6dbbf5c"
 
 [[package]]
 name = "tokio"
-version = "1.21.0"
+version = "1.21.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "89797afd69d206ccd11fb0ea560a44bbb87731d020670e79416d442919257d42"
+checksum = "0020c875007ad96677dcc890298f4b942882c5d4eb7cc8f439fc3bf813dc9c95"
 dependencies = [
  "autocfg",
  "bytes",
@@ -2148,7 +2155,19 @@ dependencies = [
  "once_cell",
  "pin-project-lite",
  "socket2",
+ "tokio-macros",
  "winapi",
+]
+
+[[package]]
+name = "tokio-macros"
+version = "1.8.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "9724f9a975fb987ef7a3cd9be0350edcbe130698af5b8f7a631e23d42d052484"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn",
 ]
 
 [[package]]

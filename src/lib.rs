@@ -1,8 +1,7 @@
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn it_works() {
-        let result = 2 + 2;
-        assert_eq!(result, 4);
-    }
+pub mod address_book {
+    pub use multicall_address::*;
+}
+
+pub mod multicall_contract {
+    pub use multicall_contract::*;
 }

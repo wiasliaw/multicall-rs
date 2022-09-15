@@ -5,6 +5,23 @@ version = "0.1.0"
 
 [workspace]
 members = [
-    "address-book",
-    "contract"
+    "multicall-address",
+    "multicall-contract"
 ]
+
+[dependencies]
+multicall-address = { version = "^0.1.0", default-features = false, path = "./multicall-address" }
+multicall-contract = { version = "^0.1.0", default-features = false, path = "./multicall-contract" }
+
+[dev-dependencies]
+ethers = { git = "https://github.com/gakonst/ethers-rs" }
+eyre = "0.6.8"
+tokio = { version = "1.21.1", features = ["macros", "rt-multi-thread"] }
+
+[[example]]
+name = "get_address"
+path = "examples/get_address.rs"
+
+[[example]]
+name = "make_call"
+path = "examples/make_call.rs"
